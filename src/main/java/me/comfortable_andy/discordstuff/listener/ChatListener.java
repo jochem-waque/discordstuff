@@ -84,7 +84,7 @@ public abstract class ChatListener {
                     .stream()
                     .parallel()
                     .filter(e -> !config.getBoolean("emoji.colonOnly", false)
-                            || e.getKey().startsWith(":"))
+                            || (e.getKey().startsWith(":") && e.getKey().endsWith(":")))
                     .filter(e -> whitelist.isEmpty() || whitelist.contains(e.getKey()))
                     .filter(e -> strAtomic.get().contains(e.getKey()))
                     .sorted(Comparator
